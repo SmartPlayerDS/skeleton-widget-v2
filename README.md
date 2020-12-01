@@ -31,12 +31,11 @@ Widget is HTML5 web technology application. Widget can show on device works with
 # Build application
 The section information how do widget application for SmartPlayer platform. Widget for SmartPlayer platform compile to *.zip archive. 
 After compiled *.zip file, user can upload it in personal cabinet (cms) and run on target device.
-<br>
-0. Clone source code <br>
+1. Clone source code <br>
 `$ git clone https://github.com/SmartPlayerDS/skeleton-widget-v2.git`
-1. In folder skeleton-widget-v2 make command fon install dependent for project: <br>
+2. In folder skeleton-widget-v2 make command fon install dependent for project: <br>
 `$ npm install` <br>
-2. Compile empty skeleton widget <br>
+3. Compile empty skeleton widget <br>
 `$ npm run build` <br>
 In folder skeleton-widget-v2/build/skeleton-widget-v2_${version}.zip is widget. 
 
