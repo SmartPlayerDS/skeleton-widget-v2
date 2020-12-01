@@ -1,0 +1,12 @@
+.input {
+    width: 100%;
+    border: 1px solid #BDBDBD !important;
+    border-radius: 5px !important;
+    padding: 10px !important;
+    margin-bottom: 8px;
+
+    &:disabled {
+        background: #E0E0E0;
+        opacity: 0.4;
+    }
+}

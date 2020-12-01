@@ -1,0 +1,38 @@
+.container {
+    margin-bottom: 8px;
+    background-color: #BDBDBD;
+    border-radius: 5px !important;
+}
+
+.input {
+    width: 100%;
+    border: 1px solid #BDBDBD !important;
+    border-radius: 5px !important;
+    padding: 10px !important;
+
+    &:disabled {
+        background: #E0E0E0;
+        opacity: 0.4;
+    }
+}
+.suggestionsContainer {
+    padding-left: 0;
+    margin-left: 0;
+
+    ul {
+        padding-left: 0;
+    }
+}
+
+.suggestion {
+    list-style: none;
+    padding: 0 10px;
+    margin-left: 0;
+
+    &:last-child {
+        padding-bottom: 20px;
+    }
+}
+.suggestionHighlighted {
+    background-color: #E0E0E0;
+}

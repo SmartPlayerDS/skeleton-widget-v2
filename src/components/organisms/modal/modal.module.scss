@@ -1,0 +1,56 @@
+.modalWrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0, .7);
+    z-index: 10000;
+    cursor: default;
+}
+
+.modal {
+    width: 100%;
+    height: 90%;
+    max-width: 800px;
+    position: relative;
+    margin: 20px auto;
+
+    background-color: #fff;
+    border-radius: 7px;
+}
+
+.modalContent {
+    max-height: 90%;
+    overflow-y: auto;
+    padding-bottom: 80px;
+}
+
+.modalControls {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    z-index: 111000;
+    border-top: 1px dotted grey;
+    background-color: #fff;
+}
+
+.modalClose {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    font-size: 45px;
+    z-index: 11000;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .6;
+    }
+
+    &:active {
+        opacity: .9;
+    }
+}

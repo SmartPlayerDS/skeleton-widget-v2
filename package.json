@@ -1,0 +1,59 @@
+{
+    "name": "skeleton-widget-v2",
+    "version": "1.2.1",
+    "private": true,
+    "homepage": "./",
+    "dependencies": {
+        "@babel/polyfill": "7.11.5",
+        "@testing-library/jest-dom": "4.2.4",
+        "@testing-library/react": "9.5.0",
+        "@testing-library/user-event": "7.2.1",
+        "@types/jest": "24.9.1",
+        "@types/lodash": "4.14.164",
+        "@types/node": "12.12.55",
+        "@types/react": "16.9.49",
+        "@types/react-autosuggest": "10.0.1",
+        "@types/react-color": "3.0.4",
+        "@types/react-dom": "16.9.8",
+        "@types/validator": "13.1.0",
+        "core-js": "3.6.5",
+        "dexie": "3.0.2",
+        "lodash": "4.17.20",
+        "moment": "2.27.0",
+        "node-sass": "4.14.1",
+        "qwebchannel": "5.9.0",
+        "react": "16.13.1",
+        "react-autosuggest": "10.0.3",
+        "react-color": "2.18.1",
+        "react-datetime": "2.16.3",
+        "react-dom": "16.13.1",
+        "react-scripts": "3.4.3",
+        "typescript": "3.7.5",
+        "validator": "13.1.1",
+        "zip-dir": "1.0.2"
+    },
+    "scripts": {
+        "start": "cross-env NODE_PATH=src react-scripts start",
+        "build": "cross-env NODE_PATH=src react-scripts build && node ./config/build.config.js",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 100 chrome version",
+            "last 100 firefox version",
+            "last 100 safari version"
+        ]
+    },
+    "devDependencies": {
+        "cross-env": "7.0.2"
+    }
+}

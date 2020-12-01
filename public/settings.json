@@ -1,0 +1,15 @@
+{
+    "settings": {
+        "type": "skeleton_widget_v2",
+        "localisation": "ru",
+        "setting1": "5",
+        "setting2": true,
+        "setting3": 10,
+        "setting4": [],
+        "setting5": {},
+        "titleColor": "",
+        "someNumber": 1,
+        "collection": [],
+        "myVideo": ""
+    }
+}

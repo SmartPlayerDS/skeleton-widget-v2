@@ -1,0 +1,90 @@
+{
+    "save": {
+        "ru": "Сохранить",
+        "en": "Save"
+    },
+    "delete": {
+        "ru": "Удалить",
+        "en": "Delete"
+    },
+    "edit": {
+        "ru": "Редактировать",
+        "en": "Edit"
+    },
+    "selectLanguage": {
+        "ru": "Выберите язык",
+        "en": "Select language"
+    },
+    "selectValue": {
+        "ru": "Выберите значение",
+        "en": "Select value"
+    },
+    "selectFolder": {
+        "ru": "Выберите папку",
+        "en": "Select folder"
+    },
+    "selectImage": {
+        "ru": "Выберите изображение",
+        "en": "Select image"
+    },
+    "defaultValue": {
+        "ru": "Значение по-умолчанию",
+        "en": "Default value"
+    },
+    "companyName": {
+        "ru": "Название компании",
+        "en": "Company name"
+    },
+    "image": {
+        "ru": "Изображение",
+        "en": "Image"
+    },
+    "images": {
+        "ru": "Изображение",
+        "en": "Images"
+    },
+    "video": {
+        "ru": "Видео",
+        "en": "Video"
+    },
+    "selected": {
+        "ru": "Выбрано",
+        "en": "Selected"
+    },
+    "media": {
+        "ru": "медиа",
+        "en": "media"
+    },
+    "selectVideo": {
+        "ru": "Выбрать видео",
+        "en": "Select video"
+    },
+    "cantDeleteLastItem": {
+        "ru": "Невозможно удалить последний элемент",
+        "en": "Can't delete last item"
+    },
+    "prevItem": {
+        "ru": "Предыдущий элемент",
+        "en": "Previous item"
+    },
+    "nextItem": {
+        "ru": "Следующий элемент",
+        "en": "Next item"
+    },
+    "addAfter": {
+        "ru": "Добавить следом",
+        "en": "Add after"
+    },
+    "helloWorld": {
+        "ru": "Привет Мир",
+        "en": "Hello World"
+    },
+    "film": {
+        "ru": "Фильм",
+        "en": "Film"
+    },
+    "music": {
+        "ru": "Музыка",
+        "en": "Music"
+    }
+}

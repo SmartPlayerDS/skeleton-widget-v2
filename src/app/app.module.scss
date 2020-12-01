@@ -1,0 +1,22 @@
+.edit {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10000000;
+}
+
+.openEditorIcon {
+    padding: 20px;
+    border-radius: 100%;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.75;
+    }
+
+    &:active {
+        opacity: 0.9;
+    }
+}
+
