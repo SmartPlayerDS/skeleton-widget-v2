@@ -3,5 +3,7 @@ export interface ModalProps {
     onClose: () => void
     showCloseIcon: boolean
     className: string
-    modalControls?: any[]
+    modalControls?: any[],
+    modalTitleControls?: JSX.Element | JSX.Element[]
+    title: string
 }

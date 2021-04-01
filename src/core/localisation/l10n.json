@@ -3,6 +3,10 @@
         "ru": "Сохранить",
         "en": "Save"
     },
+    "saveSettings": {
+        "ru": "Применить настройки",
+        "en": "Save settings"
+    },
     "delete": {
         "ru": "Удалить",
         "en": "Delete"
@@ -10,6 +14,10 @@
     "edit": {
         "ru": "Редактировать",
         "en": "Edit"
+    },
+    "widgetEditorTitle": {
+        "ru": "Настройки виджета",
+        "en": "Widget settings"
     },
     "selectLanguage": {
         "ru": "Выберите язык",
@@ -86,5 +94,25 @@
     "music": {
         "ru": "Музыка",
         "en": "Music"
+    },
+    "connectionError": {
+        "ru": "Нет связи",
+        "en": "No connect"
+    },
+    "column": {
+        "ru": "Колонка",
+        "en": "Column"
+    },
+    "settingsView": {
+        "ru": "Вид отображения настроек",
+        "en": "Settings view"
+    },
+    "horizontal": {
+        "ru": "Горизонтальный",
+        "en": "Horizontal"
+    },
+    "vertical": {
+        "ru": "Вертикальный",
+        "en": "Vertical"
     }
 }

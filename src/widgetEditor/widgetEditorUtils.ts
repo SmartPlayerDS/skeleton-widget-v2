@@ -103,7 +103,7 @@ function isValidObject(val: any) {
 }
 
 export function getQueryStringValue () {
-    return (window.location.search.indexOf('editWidget') !== -1);
+    return (window.location.search.indexOf('editWidget') !== -1 || process.env.REACT_APP_SHOW_SETTINGS === "on");
 }
 
 export default getValue;

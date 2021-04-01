@@ -28,14 +28,12 @@ Widget is HTML5 web technology application. Widget can show on device works with
  1. Add a repository with last stable version `$ sudo add-apt-repository ppa:git-core/ppa`
  2. Install git `$ sudo apt install git`
  3. Check correct installed `$ git --version`, in output console must be "v2.29.0"
-# Build Widget
+# Build application
 The section information how do widget application for SmartPlayer platform. Widget for SmartPlayer platform compile to *.zip archive. 
 After compiled *.zip file, user can upload it in personal cabinet (cms) and run on target device.
-1. Clone source code <br>
-`$ git clone https://github.com/SmartPlayerDS/skeleton-widget-v2.git`
-2. In folder skeleton-widget-v2 make command for install dependent for project: <br>
+1. In folder skeleton-widget-v2 make command fon install dependent for project: <br>
 `$ npm install` <br>
-3. Compile empty skeleton widget <br>
+2. Compile empty skeleton widget <br>
 `$ npm run build` <br>
 In folder skeleton-widget-v2/build/skeleton-widget-v2_${version}.zip is widget. 
 

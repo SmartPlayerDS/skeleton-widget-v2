@@ -37,7 +37,6 @@ $media_mob: 450px;
 
 .modalWrapper {
     position: relative;
-    padding-top: 30px;
     font-family: 'Aria', sans-serif;
 }
 
@@ -78,6 +77,51 @@ $media_mob: 450px;
     }
 }
 
+.form {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    font-family: 'Aria', sans-serif;
+
+    
+    @media screen and (max-width: $media_mini) {
+        flex-direction: column;
+    }
+}
+
+.form_type_column {
+    flex-direction: column;
+}
+
+.settingsList {
+    flex: 1 1 auto;
+    border-right: 1px solid rgba(0, 54, 136, 0.1);
+    border-bottom: 1px solid rgba(0, 54, 136, 0.1);
+
+    &:last-child {
+        border-right: none;
+    }
+
+    .item {
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    @media screen and (max-width: $media_mini) {
+        border-right: none;
+        border-bottom: none;
+    }
+}
+
+.settingsListHeader {
+    padding: 20px;
+    font-size: 22px;
+    line-height: 25px;
+    color: #4F4F4F;
+    border-bottom: 1px solid rgba(0, 54, 136, 0.1);
+}
+
 .modal {
     z-index: 10100;
 
@@ -114,6 +158,28 @@ $media_mob: 450px;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 15px 13px;
+
+    &:hover {
+        opacity: .6;
+    }
+
+    &:active {
+        opacity: .9;
+    }
+}
+
+.viewButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4f4f4f;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 15px 13px;
+    cursor: pointer;
 
     &:hover {
         opacity: .6;

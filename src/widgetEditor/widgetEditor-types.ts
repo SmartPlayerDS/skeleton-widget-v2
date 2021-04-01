@@ -1,6 +1,11 @@
 import {WidgetOptionsEditor} from "../core/models/WidgetOptionsEditor";
 import { Field } from "../core/models/Field";
 
+export interface SettingsList {
+    name: string    
+    fields: Field[]
+}
+
 export type TSelection = 'default' | 'withFolders'
 export type TSelectMediaOptions = {
     selection: TSelection
@@ -12,7 +17,7 @@ export type OpenSelectMediaFunc = (fieldName: string, options?: TSelectMediaOpti
 
 export interface WidgetEditorProps {
     path: string
-    fields: Field[]
+    settings: SettingsList[]
     isNeedDownloadMedia: boolean
     widgetOptionsEditor: WidgetOptionsEditor
     onWidgetOptionsUpdated: (updatedData?: any) => void
@@ -37,6 +42,7 @@ export interface WidgetEditorState {
     showModal: boolean
     modalType: string | undefined
     item: any
+    view: 'column' | 'row'
 }
 
 

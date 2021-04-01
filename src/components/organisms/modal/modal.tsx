@@ -3,7 +3,7 @@ import { ModalProps } from './modal-types';
 
 import styles from './modal.module.scss'
 
-const Modal: FunctionComponent<ModalProps> = ({open, children, onClose, showCloseIcon, modalControls}) => {
+const Modal: FunctionComponent<ModalProps> = ({open, children, onClose, showCloseIcon, modalControls, title, modalTitleControls}) => {
     if (!open) {
         return null
     }
@@ -11,9 +11,19 @@ const Modal: FunctionComponent<ModalProps> = ({open, children, onClose, showClos
     return (
         <div className={styles.modalWrapper}>
             <div className={styles.modal}>
-                {showCloseIcon &&
-                    <div className={styles.modalClose} onClick={onClose}>×</div>
-                }
+                <div className={styles.modalTitle}>
+                    {title}
+                    
+                    {
+                        modalTitleControls && <div className={styles.modalTitleControls}>
+                            {modalTitleControls}
+                        </div>
+                    }
+
+                    {showCloseIcon &&
+                        <div className={styles.modalClose} onClick={onClose}>×</div>
+                    }
+                </div>
 
                 <div className={styles.modalContent}>
                     {children}

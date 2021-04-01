@@ -2,6 +2,7 @@
     "settings": {
         "type": "skeleton_widget_v2",
         "localisation": "ru",
+        "settingsView": "column",
         "setting1": "5",
         "setting2": true,
         "setting3": 10,

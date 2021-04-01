@@ -15,13 +15,19 @@ interface IFilePickerComponent extends ICommonUI {
 const FilePicker: FunctionComponent<IFilePickerComponent> = ({field, editableItem, onOpenSelectMediaAdminScreen, onChangeItem}) => {
     const fieldName = field.name
 
+    const openFolder = () => {
+        let selection;
+        if (field.advanced && field.advanced.selection) {
+            selection = field.advanced.selection
+        }
+        onOpenSelectMediaAdminScreen(fieldName, {selection: selection})
+    }
+
     return (
         <div>
             <div
                 className={styles.button}
-                onClick={() => {
-                    onOpenSelectMediaAdminScreen(fieldName, {selection: field.advanced.selection})
-                }}
+                onClick={openFolder}
             >
                 {translate('selectFolder')}
             </div>

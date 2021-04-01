@@ -1,21 +1,29 @@
+import { getEnviromentOS } from "../util/mainUtil";
+
 export class Logger {
     static _instance = null;
+    _os = null
 
     static get = () => {
         if (Logger._instance === null) {
             console.log('Logger get() Create new instance')
-            Logger._instance = new Logger();
+            const os = getEnviromentOS()
+            Logger._instance = new Logger(os);
         }
         return Logger._instance;
     }
 
-    log = (message, messageType) => {
-        const parent = window.top;
+    constructor(os) {
+        this._os = os;
+    }
 
-        if (this._isRunOnCMS()) {
+    log = (message, messageType) => {
+        if (this._isRunOnFrontend(this._os)) {
             this._printMessage(message, messageType)
             return
         }
+
+        const parent = window.top;
 
         if (!this._canDevicePrintMessage(parent)) {
             this._printMessage(message, messageType)
@@ -45,13 +53,7 @@ export class Logger {
         return parent && parent.useDeviceForWidget
     }
 
-    _isRunOnCMS = () => {
-        if (!window.location && !window.location.hostname) {
-            return false
-        }
-
-        return window.location.hostname.indexOf('cms') === 0 || window.location.hostname.indexOf('api') === 0
-    }
+    _isRunOnFrontend = (os) => os === 'frontend'
 
     err = (message) => {
         Logger.get().log(`Widget error: ${message}`, MESSAGE_TYPE.error);

@@ -5,7 +5,7 @@ import 'moment/locale/ru'
 import { getQueryStringValue } from './widgetEditorUtils'
 
 import {isExist, isNotEmptyArray, isNotEmptyString, spreadToList} from "../core/util/mainUtil";
-import {widgetEditorDefaultProps, WidgetEditorProps, WidgetEditorState} from './widgetEditor-types'
+import {widgetEditorDefaultProps, WidgetEditorProps, WidgetEditorState, SettingsList, OpenSelectMediaFunc, TSelectMediaOptions} from './widgetEditor-types'
 import {WidgetUI} from "./widgetEditorUI";
 import {translate} from "../core/localisation";
 import {MediaFileData, convertMediaDateToMediaFile, MediaFile} from "../core/models/MediaFileData";
@@ -15,10 +15,11 @@ import {Modal} from "../components/organisms/modal/modal";
 
 import 'react-datetime/css/react-datetime.css'
 import styles from './widgetEditor.module.scss'
-import {OpenSelectMediaFunc, TSelectMediaOptions} from "./widgetEditor-types";
-
 
 const isMobileDevice = () => window.settings && window.settings.showSettingsOnMobile
+
+const DEFAULT_VIEW = 'column'
+const SETTINGS_VIEW_NAME = 'settingsView'
 
 class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState> {
     isEnabled: boolean
@@ -33,7 +34,8 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
         this.state = {
             showModal: false,
             modalType: undefined,
-            item: undefined
+            item: undefined,
+            view: DEFAULT_VIEW
         }
         this.widgetUI = new WidgetUI(this.changeItem, this.onChangeColor, this.openSelectMediaAdminScreen)
         this.isEnabled = this.enabled(p_)
@@ -73,7 +75,8 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
         this.setState({
             showModal: true,
             modalType: 'edit',
-            item: { ...editableItem }
+            item: { ...editableItem },
+            view: editableItem[SETTINGS_VIEW_NAME] || DEFAULT_VIEW
         })
 
         p_.onMessageForApp('editStart')
@@ -90,18 +93,23 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
             return
         }
 
-        p_.fields.forEach((field) => {
-            let newFieldValue = s_.item[field.name]
-            if (p_.isNeedDownloadMedia && this._isFieldNeedDownload(field)) {
-                newFieldValue = this._addDownloading(s_.item[field.name])
-            }
-            editableSettings[field.name] = newFieldValue
+        p_.settings.forEach((settingsList) => {
+            settingsList.fields.forEach((field) => {
+                let newFieldValue = s_.item[field.name]
+                if (p_.isNeedDownloadMedia && this._isFieldNeedDownload(field)) {
+                    newFieldValue = this._addDownloading(s_.item[field.name])
+                }
+                editableSettings[field.name] = newFieldValue
+            })
         })
+
+        editableSettings[SETTINGS_VIEW_NAME] = s_.item[SETTINGS_VIEW_NAME]
 
         this.closeModal()
         const dataForUpdating = {
             [p_.path]: editableSettings
         }
+
         this.updateDataByOptionsAndPassToApp({}, dataForUpdating)
     }
     private _isFieldNeedDownload = (field: Field): boolean => {
@@ -188,7 +196,7 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
 
         delete divProps['tag']
         delete divProps['path']
-        delete divProps['fields']
+        delete divProps['columns']
         delete divProps['onlyEditIcon']
         delete divProps['onlyAddIcon']
         delete divProps['controlsStyle']
@@ -322,6 +330,23 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
         return label
     }
 
+    renderSettings = (settings: SettingsList[]) =>{
+        const { view } = this.state;
+
+        const className = view === 'column' ? styles.settingsList_type_column : styles.settingsList_type_row
+
+        return settings.map(({ fields, name }, index: number) => {
+            return (
+                <div key={index} className={`${styles.settingsList} ${className}`}>
+                    <div className={styles.settingsListHeader}>
+                        {translate(name)}
+                    </div>
+                    {this._renderControlsByFields(fields)}
+                </div>
+            )
+        })
+    }
+    
     _renderControlsByFields = (fields: Field[]) =>{
         return fields.map((field: Field, index: number) => {
             let labelName = this._getFieldLabel(field)
@@ -345,9 +370,53 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
                 key={'submitButton'}
                 onClick={this.submitModalSettings}
             >
-                {translate('save')}
+                {translate('saveSettings')}
             </button>
         ]
+    }
+
+    getModalTitleControls = () => {
+        const { view } = this.state;
+
+        return [
+            <button
+                className={styles.viewButton}
+                type={'button'}
+                key={'viewButton'}
+                onClick={this.changeView}
+            >
+                <img src={`./images/${view}.svg`}></img>
+            </button>
+        ]
+    }
+
+    getWidgetVersion = () => {
+        return process.env.REACT_APP_VERSION ? ` (${process.env.REACT_APP_VERSION})`: ''
+    }
+
+    getWidgetEditorTitle = () => {
+        return `${translate('widgetEditorTitle')}${this.getWidgetVersion()}`
+    }
+
+    saveSettingsView = () => {
+        const { item, view } = this.state
+
+        if (!item[SETTINGS_VIEW_NAME]) return
+
+        this.changeItem({ target: { value: view }}, SETTINGS_VIEW_NAME)
+    }
+
+    changeView = (e: React.MouseEvent) => {
+        e.preventDefault();
+
+        this.setState((prevState) => {
+            return {
+                ...prevState,
+                view: prevState.view === 'row' ? 'column' : 'row'
+            }
+        }, () => {
+            this.saveSettingsView()
+        })
     }
 
     render() {
@@ -364,6 +433,7 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
 
         const isMobile = isMobileDevice()
         const s_ = this.state
+        const className = s_.view === 'column' ? styles.form_type_column : styles.form_type_row
 
         return (
             <Tag {...this.divProps} className={styles.wrapper}>
@@ -382,14 +452,16 @@ class WidgetEditor extends React.Component<WidgetEditorProps, WidgetEditorState>
 
                 <Modal
                     open={s_.showModal}
+                    title={this.getWidgetEditorTitle()}
                     onClose={this.closeModal}
                     showCloseIcon={!isMobile}
                     className={styles.modal}
                     modalControls={this.getModalControls()}
+                    modalTitleControls={this.getModalTitleControls()}
                 >
-                    <form className={styles.modalWrapper}>
+                    <form className={`${styles.form} ${className}`}>
                         {(s_.modalType === 'add' || s_.modalType === 'edit') &&
-                        this._renderControlsByFields(p_.fields)
+                            this.renderSettings(p_.settings)
                         }
                     </form>
                 </Modal>

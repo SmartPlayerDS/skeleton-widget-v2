@@ -248,72 +248,143 @@ class App extends React.Component<IAppProps, IAppState> {
                             onMessageForApp={this.onMessageForApp}
                             onWidgetOptionsUpdated={this.onWidgetOptionsUpdated}
                             ref={settingsIconRef => this.settingsIconRef = settingsIconRef}
-                            fields={[
+                            settings={[
                                 {
-                                    name: 'film',
-                                    label: translate('film'),
-                                    type: 'select',
-                                    selectOptions: [
-                                        {value: 'id1', label: 'Star Wars'},
-                                        {value: 'id2', label: 'The Lord of the Rings'},
-                                        {value: 'id3', label: 'The Witcher'},
+                                    name: 'column',
+                                    fields: [
+                                        {
+                                            name: 'film',
+                                            label: translate('film'),
+                                            type: 'select',
+                                            selectOptions: [
+                                                {value: 'id1', label: 'Star Wars'},
+                                                {value: 'id2', label: 'The Lord of the Rings'},
+                                                {value: 'id3', label: 'The Witcher'},
+                                            ]
+                                        },
+                                        {
+                                            name: 'music',
+                                            label: translate('music'),
+                                            type: 'multiselect',
+                                            selectOptions: [
+                                                {value: 'id1', label: 'Jazz'},
+                                                {value: 'id2', label: 'Pop'},
+                                                {value: 'id3', label: 'Classic'},
+                                                {value: 'id4', label: 'Rock'},
+                                                {value: 'id5', label: 'Techno'}
+                                            ]
+                                        },
+                                        {
+                                            label: translate('selectLanguage'),
+                                            name: 'localisation',
+                                            type: 'localisation'
+                                        },
+                                        {
+                                            name: 'companyName',
+                                            label: translate('companyName'),
+                                        },
+                                        {
+                                            name: 'myPicture',
+                                            label: translate('image'),
+                                            type: 'image'
+                                        },
+                                        {
+                                            name: 'birthday',
+                                            type: 'date'
+                                        },
+                                        {
+                                            name: 'titleColor',
+                                            type: 'color',
+                                        },
+                                        {
+                                            name: 'someNumber',
+                                            type: 'number',
+                                        },
+                                        {
+                                            name: 'collection',
+                                            label: translate('images'),
+                                            type: 'fileFolder'
+                                        },
+                                        {
+                                            name: 'collection',
+                                            label: translate('images'),
+                                            type: 'fileFolder',
+                                            advanced: {
+                                                selection: "withFolders"
+                                            }
+                                        },
                                     ]
                                 },
                                 {
-                                    name: 'music',
-                                    label: translate('music'),
-                                    type: 'multiselect',
-                                    selectOptions: [
-                                        {value: 'id1', label: 'Jazz'},
-                                        {value: 'id2', label: 'Pop'},
-                                        {value: 'id3', label: 'Classic'},
-                                        {value: 'id4', label: 'Rock'},
-                                        {value: 'id5', label: 'Techno'}
+                                    name: 'column',
+                                    fields: [
+                                        {
+                                            name: 'film',
+                                            label: translate('film'),
+                                            type: 'select',
+                                            selectOptions: [
+                                                {value: 'id1', label: 'Star Wars'},
+                                                {value: 'id2', label: 'The Lord of the Rings'},
+                                                {value: 'id3', label: 'The Witcher'},
+                                            ]
+                                        },
+                                        {
+                                            name: 'music',
+                                            label: translate('music'),
+                                            type: 'multiselect',
+                                            selectOptions: [
+                                                {value: 'id1', label: 'Jazz'},
+                                                {value: 'id2', label: 'Pop'},
+                                                {value: 'id3', label: 'Classic'},
+                                                {value: 'id4', label: 'Rock'},
+                                                {value: 'id5', label: 'Techno'}
+                                            ]
+                                        },
+                                        {
+                                            label: translate('selectLanguage'),
+                                            name: 'localisation',
+                                            type: 'localisation'
+                                        },
+                                        {
+                                            name: 'companyName',
+                                            label: translate('companyName'),
+                                        },
+                                        {
+                                            name: 'myPicture',
+                                            label: translate('image'),
+                                            type: 'image'
+                                        },
+                                        {
+                                            name: 'birthday',
+                                            type: 'date'
+                                        },
+                                        {
+                                            name: 'titleColor',
+                                            type: 'color',
+                                        },
+                                        {
+                                            name: 'someNumber',
+                                            type: 'number',
+                                        },
+                                        {
+                                            name: 'collection',
+                                            label: translate('images'),
+                                            type: 'fileFolder'
+                                        },
+                                        {
+                                            name: 'collection',
+                                            label: translate('images'),
+                                            type: 'fileFolder',
+                                            advanced: {
+                                                selection: "withFolders"
+                                            }
+                                        },
+                                        {
+                                            name: 'myVideo',
+                                            label: translate('video'),
+                                            type: 'video'
+                                        }
                                     ]
-                                },
-                                {
-                                    label: translate('selectLanguage'),
-                                    name: 'localisation',
-                                    type: 'localisation'
-                                },
-                                {
-                                    name: 'companyName',
-                                    label: translate('companyName'),
-                                },
-                                {
-                                    name: 'myPicture',
-                                    label: translate('image'),
-                                    type: 'image'
-                                },
-                                {
-                                    name: 'birthday',
-                                    type: 'date'
-                                },
-                                {
-                                    name: 'titleColor',
-                                    type: 'color',
-                                },
-                                {
-                                    name: 'someNumber',
-                                    type: 'number',
-                                },
-                                {
-                                    name: 'collection',
-                                    label: translate('images'),
-                                    type: 'fileFolder'
-                                },
-                                {
-                                    name: 'collection',
-                                    label: translate('images'),
-                                    type: 'fileFolder',
-                                    advanced: {
-                                        selection: "withFolders"
-                                    }
-                                },
-                                {
-                                    name: 'myVideo',
-                                    label: translate('video'),
-                                    type: 'video'
                                 }
                             ]}
                         >
